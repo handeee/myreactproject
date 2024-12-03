@@ -1,38 +1,190 @@
 .App {
   text-align: center;
 }
+@media (max-width: 768px) {
+  .custom-card {
+    width: 100%; /* Allow the card to take full width on smaller screens */
+    margin-left: 0; /* Reset left margin for smaller screens */
+  }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  .list-group {
+    max-width: 100%; /* Allow the list to take full width on smaller screens */
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/****************************oyun alanı**************************/
+.oyun {
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+  padding-top: 200px; /* Üst boşluk oluştur */
   display: flex;
+  justify-content: center; /* Yatayda ortalama */
+  align-items: flex-start; /* Üst boşlukla hizalama */
+}
+
+.trex {
+  background-color: aliceblue;
+  width: 900px;
+  height: 200px;
+  position: relative; /* Kaktüsün içinde konumlanması için */
+  overflow: hidden;
+}
+
+.karakter img {
+  width: 50px;
+  height: 55px;
+  position: absolute;
+  bottom:0; /* Sol alt köşeye yapıştır */
+  left: 0; /* Sol üst köşeye yapıştır */
+ 
+.bitki img{
+  position: absolute;
+  width:30px;
+  
+  bottom:0;
+  left:865px;
+
+}
+.karakter-animate{
+  animation:karakter .5s linear ;
+}
+}
+.bitki-animate{
+  animation:bitki 2s linear infinite;
+}
+@keyframes bitki {
+  0%{left:775px;}
+  100%{left:-40px}
+} 
+@keyframes karakter{
+  0%{bottom:0px;}
+  25%{bottom:70px;}
+  75%{bottom:70px;}
+  100%{bottom:0px;}
+}
+
+
+.homepage2-container{
+  display:flex;
+  margin-left:10px;
+  margin-top:60px;
+  width:90px;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  
+}
+.main-container{
+  display:flex;
+  flex-direction: column;
+  
+}
+.custom-list-item{
+  width: 220px;
+  margin-bottom:5px;
+  border: none; /* Varsayılan çizgi kaldırılır */
+  transition: all 0.3s ease; /* Hover sırasında yumuşak geçiş efekti */
+text-align: left;
+}
+.custom-list-item:hover {
+  background-color:paleturquoise; /* Hover sırasında arka plan rengi */
+  color: black; /* Yazı rengi */
+  border-left: 4px solid white; /* Sol tarafta bir kenar çizgisi ekler */
+  border-right: 4px solid white; /* Sol tarafta bir kenar çizgisi ekler */
+  cursor: pointer; /* Fare imlecini el işaretine çevirir */
+}
+
+
+
+.custom-button{
+  width: 220px;
+
+}
+.homepaga{
+display: flex;
+margin-left:400px;
+margin-top:0px;
+}
+form {
+  width: 100%;
+  max-width: 400px; /* Maksimum genişlik ayarı */
+  margin: 0 auto; /* Ortalamak için */
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  
+}
+
+/* Input elemanları için stil */
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom:20px;
+  margin-top: 10px; /* Üst boşluk */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  
+}
+
+/* Başlıklar ve butonlar için stil */
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+/* Buton stili */
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
   color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+
 }
 
-.App-link {
-  color: #61dafb;
+button:hover {
+  background-color: #0056b3;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Password gizleme butonu */
+.toggle-password {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: 14px;
+}
+
+/* Inputların içinde küçük boşluk */
+input::placeholder {
+  color: #999;
+}
+
+/* Kullanıcı adı, soyad, şifre için yatay hizalama */
+.yanyanainput {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.yanyanainput input {
+  width: 48%; /* Yatayda yan yana gelmeleri için */
+}
+.navbar {
+  position: fixed; /* Sabit pozisyon */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; /* Navbar'ı sayfa üzerindeki diğer öğelerden üstte tutar */
+}
+
+/* Form için stil */
+/* Register sayfası için margin-top */
+.register-page {
+  margin-top: 140px; /* Navbar'ın yüksekliği kadar üstten boşluk */
 }
