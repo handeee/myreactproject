@@ -29,7 +29,7 @@ function App() {
       
       <Routes>
         <Route path="/" element={
-          <div className="main-container">
+          <div className="main-container" >
             <div className="homepage2-container">
               <Homepage2 />
             </div>

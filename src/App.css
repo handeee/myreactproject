@@ -65,126 +65,42 @@
 }
 
 
-.homepage2-container{
-  display:flex;
-  margin-left:10px;
-  margin-top:60px;
-  width:90px;
-  flex-direction: column;
-  
-}
-.main-container{
-  display:flex;
-  flex-direction: column;
-  
-}
-.custom-list-item{
-  width: 220px;
-  margin-bottom:5px;
-  border: none; /* Varsayılan çizgi kaldırılır */
-  transition: all 0.3s ease; /* Hover sırasında yumuşak geçiş efekti */
-text-align: left;
-}
-.custom-list-item:hover {
-  background-color:paleturquoise; /* Hover sırasında arka plan rengi */
-  color: black; /* Yazı rengi */
-  border-left: 4px solid white; /* Sol tarafta bir kenar çizgisi ekler */
-  border-right: 4px solid white; /* Sol tarafta bir kenar çizgisi ekler */
-  cursor: pointer; /* Fare imlecini el işaretine çevirir */
-}
-
-
-
-.custom-button{
-  width: 220px;
-
-}
-.homepaga{
-display: flex;
-margin-left:400px;
-margin-top:0px;
-}
-form {
-  width: 100%;
-  max-width: 400px; /* Maksimum genişlik ayarı */
-  margin: 0 auto; /* Ortalamak için */
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  
-}
-
-/* Input elemanları için stil */
-input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom:20px;
-  margin-top: 10px; /* Üst boşluk */
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-sizing: border-box;
-  
-}
-
-/* Başlıklar ve butonlar için stil */
-h2 {
-  text-align: center;
-  color: #333;
-}
-
-/* Buton stili */
-button {
-  width: 100%;
-  padding: 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-
-/* Password gizleme butonu */
-.toggle-password {
-  background: none;
-  border: none;
-  color: #007bff;
-  cursor: pointer;
-  text-decoration: underline;
-  font-size: 14px;
-}
-
-/* Inputların içinde küçük boşluk */
-input::placeholder {
-  color: #999;
-}
-
-/* Kullanıcı adı, soyad, şifre için yatay hizalama */
-.yanyanainput {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-.yanyanainput input {
-  width: 48%; /* Yatayda yan yana gelmeleri için */
-}
 .navbar {
   position: fixed; /* Sabit pozisyon */
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000; /* Navbar'ı sayfa üzerindeki diğer öğelerden üstte tutar */
+  background-color: white; /* Arka plan rengi */
+  border-bottom: 1px solid #ddd; /* Alt ayrım çizgisi */
+  height: 80px; /* Yükseklik */
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
 }
 
-/* Form için stil */
-/* Register sayfası için margin-top */
-.register-page {
-  margin-top: 140px; /* Navbar'ın yüksekliği kadar üstten boşluk */
+/* Ana konteyner */
+.main-container {
+  display: flex;
+  flex-direction: row; /* Yan yana düzenleme */
+  justify-content: space-between; /* Aralarına boşluk bırakır */
+  margin-top: 70px; /* Navbar yüksekliği kadar boşluk */
+  gap: 20px; /* Aralarındaki boşluk */
+}
+
+/* Homepage2 daha az yer kaplasın */
+.homepage2-container {
+  flex: 0.2; /* Daha az alan kaplar */
+   margin-top:50px;
+  padding: 10px;
+ 
+  
+}
+
+/* Homepage daha geniş yer kaplasın */
+.homepage-container {
+  flex: 0.7; /* Daha geniş alan kaplar */
+  margin-top:50px;
+  padding: 10px;
+  
 }
