@@ -1,48 +1,49 @@
-import React, { useState } from "react";  // useState'i import ettik
+import React, { useEffect, useState } from "react";  // useState'i import ettik
 import myuseroneImage from "../resimler/indir.jpg"; // Resmi import et
 import myusertwoImage from "../resimler/indir1.jpg"; // Başka bir resim eklemek için
 import kitapresmi from "../resimler/sabahattinali.jpg";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faComment } from '@fortawesome/free-solid-svg-icons';  // Kalp ve yorum ikonları
 
-const HomePage = () => {
+const HomePage = ({veri}) => {
   const [isLiked, setIsLiked] = useState(false);  // Beğenme durumu için state tanımlıyoruz
-
+ const [data,setdata]=useState([]);
   // Her kullanıcının ismi ve resmini bir nesne olarak saklıyoruz
-  const users = [
-    {
-      name: "hande",
-      image: myuseroneImage,
-      command: "kitap çok sürükleyici",
-      kitapyazar: "sabahattin ali",
-      kitapismi: "Değirmen",
-      kitapresim: kitapresmi,
-    },
-    {
-      name: "eda",
-      image: myusertwoImage,
-      command: "“Hiçbirimizin yüzünde gülmek takati kalmamıştı…”",
-      kitapyazar: "sabahattin ali",
-      kitapismi: "Değirmen",
-      kitapresim: kitapresmi,
-    },
-    {
-      name: "ela",
-      image: myuseroneImage,
-      command: "kitap çok sürükleyici",
-      kitapyazar: "sabahattin ali",
-      kitapismi: "Değirmen",
-      kitapresim: kitapresmi,
-    },
-    {
-      name: "hatice",
-      image: myusertwoImage,
-      command: "kitap çok sürükleyici",
-      kitapyazar: "sabahattin ali",
-      kitapismi: "Değirmen",
-      kitapresim: kitapresmi,
-    },
-  ];
+  // const users = [
+  //   {
+  //     name: "hande",
+  //     image: myuseroneImage,
+  //     command: "kitap çok sürükleyici",
+  //     kitapyazar: "sabahattin ali",
+  //     kitapismi: "Değirmen",
+  //     kitapresim: kitapresmi,
+  //   },
+  //   {
+  //     name: "eda",
+  //     image: myusertwoImage,
+  //     command: "“Hiçbirimizin yüzünde gülmek takati kalmamıştı…”",
+  //     kitapyazar: "sabahattin ali",
+  //     kitapismi: "Değirmen",
+  //     kitapresim: kitapresmi,
+  //   },
+  //   {
+  //     name: "ela",
+  //     image: myuseroneImage,
+  //     command: "kitap çok sürükleyici",
+  //     kitapyazar: "sabahattin ali",
+  //     kitapismi: "Değirmen",
+  //     kitapresim: kitapresmi,
+  //   },
+  //   {
+  //     name: "hatice",
+  //     image: myusertwoImage,
+  //     command: "kitap çok sürükleyici",
+  //     kitapyazar: "sabahattin ali",
+  //     kitapismi: "Değirmen",
+  //     kitapresim: kitapresmi,
+  //   },
+  // ];
+ 
 
   // Beğenme (kalp) ikonu için toggle fonksiyonu
   const toggleLike = () => {
@@ -99,7 +100,7 @@ const HomePage = () => {
           padding: "0 20px",
         }}
       >
-        {users.map((user, index) => (
+        {veri.map((user, index) => (
           <div
             key={index}
             style={{
@@ -134,7 +135,7 @@ const HomePage = () => {
                 style={{ width: "100px", height: "80px" }}
               />
               <div>
-                <p style={{ fontWeight: "bold", marginBottom: "2px" }}>
+                <p style={{ fontWeight: "bold", marginBottom: "2px",marginLeft:"9px" }}>
                   {user.kitapyazar}
                 </p>
                 <p>{user.kitapismi}</p>
@@ -149,7 +150,7 @@ const HomePage = () => {
                   style={{
                     color: isLiked ? "red" : "#777", // Tıklanınca kırmızı olacak, aksi halde gri
                     transition: "color 0.3s ease",
-                    fontSize: "20px",
+                    fontSize: "18px",
                   }}
                 />
               </div>
@@ -160,7 +161,7 @@ const HomePage = () => {
                   icon={faComment}
                   style={{
                     color: "#777", // Yorum ikonu rengini gri yapıyoruz
-                    fontSize: "20px",
+                    fontSize: "18px",
                   }}
                 />
               </div>

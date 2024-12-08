@@ -85,22 +85,66 @@
   flex-direction: row; /* Yan yana düzenleme */
   justify-content: space-between; /* Aralarına boşluk bırakır */
   margin-top: 70px; /* Navbar yüksekliği kadar boşluk */
-  gap: 20px; /* Aralarındaki boşluk */
+  gap:10px; /* Aralarındaki boşluk */
 }
 
 /* Homepage2 daha az yer kaplasın */
 .homepage2-container {
   flex: 0.2; /* Daha az alan kaplar */
-   margin-top:50px;
+   margin-top:120px;
   padding: 10px;
- 
-  
+  width:290px;
+}
+@media (max-width: 768px) {
+  .homepage2-container {
+    flex: 0.3; /* Daha az alan kaplar */
+    margin-top: 330px;
+    padding: 8px;
+    width: 250px;
+  }
 }
 
+/* Ekran genişliği 480px'den küçük olduğunda (mobil cihazlar için) */
+@media (max-width: 480px) {
+  .homepage2-container {
+    flex: 0.5; /* Daha fazla küçült */
+    margin-top: 80px;
+    padding: 5px;
+    width: 200px;
+  }
+}
 /* Homepage daha geniş yer kaplasın */
 .homepage-container {
-  flex: 0.7; /* Daha geniş alan kaplar */
+  flex: 0.9; /* Daha geniş alan kaplar */
   margin-top:50px;
   padding: 10px;
   
 }
+/*writedetail*/
+
+.detay{
+  display: flex;
+  flex-direction: column;
+  margin-top:60px;
+}
+.yazarresim{
+  display: flex;
+}
+.yazarresim img{
+  width: 100px;
+  height:90px;
+  margin-right:40px;
+  margin-left:10px;
+}
+.hakkında{
+  display: flex;
+  flex-direction: column;
+  margin-top:40px;
+  align-items: flex-start;
+  margin-left:8px ;
+}
+
+.pet{
+  display:flex;
+}
+

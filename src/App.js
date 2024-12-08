@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, } from "react-router-dom";
 import MyNavbar from "./components/MyNavbar";
 import HomePage from "./components/HomePage";
 import Types from "./components/Types";
@@ -8,42 +8,62 @@ import Writer from "./components/Writer";
 import Selectedtypes from "./Selectedtypes";
 import Homepage2 from "./components/Homepage2";
 import Register from "./components/Register";
-
+import Writerdetail from "./components/Writerdetail";
+import Kitapekleme from "./components/Kitapekleme";
 
 function App() {
-  const [data2, setData2] = useState([])
-  //const  applyfetch=()=>{
-  // fetch('http://localhost:8080/api')
-  //   .then((response) => response.json()) // JSON formatında cevabı al
-  //   .then((data) => {
-  //     setData2(data.fruits)
-  //   })
-  // }
-  // useEffect(()=>{
-  //   applyfetch();
-  // },[])
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true); // Veri yükleme durumu için
 
+  useEffect(() => {
+    // Backend'den kullanıcı verilerini çek
+    fetch("http://localhost:8080/")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Veri alınamadı");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        // Resim URL'lerini tam hale getir
+        const updatedUsers = data.map((user) => ({
+          ...user,
+          image: `http://localhost:8080/public/${user.image}`, // Resim URL'si
+          kitapresim: `http://localhost:8080/public/${user.kitapresim}`, // Kitap resmi URL'si
+        }));
+        setUsers(updatedUsers);
+        setLoading(false); // Yükleme tamamlandı
+      })
+      .catch((error) => {
+        console.error("Veri çekme hatası:", error);
+        setLoading(false); // Hata durumunda da yükleme tamamlandı
+      });
+  }, []);
+
+  if (loading) {
+    return <div>Yükleniyor...</div>;
+  }
   return (
     <div className="App">
       <MyNavbar />
-      
-      <Routes>
-        <Route path="/" element={
-          <div className="main-container" >
-            <div className="homepage2-container">
-              <Homepage2 />
-            </div>
-            <div className="homepage-container">
-              <HomePage />
-            </div>
-          </div>
-        } />
-        <Route path="/turler" element={<Types />} />
-        <Route path="/turler/:tur" element={<Selectedtypes />} />
-        <Route path="/Neokusamoyna" element={<Game/>}/>
-        <Route path="/yazarlar" element={<Writer/>}></Route>
-        <Route path="/register" element={<Register/>}/>
-      </Routes>
+    
+      <div className="main-container">
+  <Homepage2 className="homepage2-container"/>
+  <Routes>
+    <Route path="/" element={<div className="homepage-container"><HomePage veri={users}/></div>} />
+    <Route path="/turler" element={<div className="homepage-container"><Types /></div>} />
+    {/* <Route path="/turler/:tur" element={<div className="homepage-container"><Selectedtypes /></div>} /> */}
+   
+    <Route path="/Neokusamoyna" element={<div className="homepage-container"><Game/></div>} />
+    <Route path="/yazarlar" element={<div className="homepage-container"><Writer /></div>} />
+    <Route path="/register" element={<div className="homepage-container"><Register/></div>} />
+    <Route path="/turler/:tur" element={<Writerdetail />} /> {/* Tür parametresi */}
+    <Route path="/yazarlar/:yazaradi" element={<div className="homepage-container"><Writerdetail /></div>} />
+
+  </Routes>
+</div>
+
+
 
     </div>
   );
