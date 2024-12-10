@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Route, Routes, } from "react-router-dom";
+import { Route, Routes, useLocation} from "react-router-dom";
 import MyNavbar from "./components/MyNavbar";
 import HomePage from "./components/HomePage";
 import Types from "./components/Types";
 import Game from "./components/Game";
 import Writer from "./components/Writer";
-import Selectedtypes from "./Selectedtypes";
+
 import Homepage2 from "./components/Homepage2";
 import Register from "./components/Register";
 import Writerdetail from "./components/Writerdetail";
@@ -14,10 +14,10 @@ import Kitapekleme from "./components/Kitapekleme";
 function App() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true); // Veri yükleme durumu için
-
+  const location = useLocation(); // Sayfa yolunu almak için useLocation hook'u
   useEffect(() => {
     // Backend'den kullanıcı verilerini çek
-    fetch("http://localhost:8080/")
+    fetch("http://localhost:8080/api/books")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Veri alınamadı");
@@ -45,12 +45,14 @@ function App() {
   }
   return (
     <div className="App">
-      <MyNavbar />
+      {location.pathname !== "/api/books" && <MyNavbar />}
     
       <div className="main-container">
-  <Homepage2 className="homepage2-container"/>
+      {location.pathname !== "/api/books" && <Homepage2 className="homepage2-container"/>}
+ 
   <Routes>
     <Route path="/" element={<div className="homepage-container"><HomePage veri={users}/></div>} />
+    <Route path="/api/books" element={<Kitapekleme/>}/>
     <Route path="/turler" element={<div className="homepage-container"><Types /></div>} />
     {/* <Route path="/turler/:tur" element={<div className="homepage-container"><Selectedtypes /></div>} /> */}
    
